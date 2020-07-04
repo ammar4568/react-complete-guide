@@ -15,7 +15,7 @@ class App extends Component {
   nameChangeHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(person => person.id === id);
 
-    const person = {...this.state.persons[personIndex]}
+    const person = { ...this.state.persons[personIndex] }
     person.name = event.target.value;
 
     const persons = [...this.state.persons];
@@ -37,6 +37,15 @@ class App extends Component {
   }
 
   render() {
+    const btnStyle = {
+      backgroundColor: 'green',
+      color: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    }
+
     let persons = null;
 
     if (this.state.showPersons) {
@@ -55,8 +64,9 @@ class App extends Component {
           }
         </div >
       );
-    }
 
+      btnStyle.backgroundColor = 'red';
+    }
 
     return (
       <div className="App" >
@@ -68,12 +78,5 @@ class App extends Component {
   }
 }
 
-const btnStyle = {
-  backgroundColor: 'white',
-  font: 'inherit',
-  border: '1px solid blue',
-  padding: '8px',
-  cursor: 'pointer'
-}
 
 export default App;
