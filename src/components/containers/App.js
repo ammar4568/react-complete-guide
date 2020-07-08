@@ -28,6 +28,15 @@ class App extends Component {
     console.log('[App.js] componentDidMount')
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('[App.js] shouldComponentUpdate')
+    return true;
+  }
+
+  componentDidUpdate() {
+    console.log('[App.js] componentDidUpdate')
+  }
+
   nameChangeHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(person => person.id === id);
 
@@ -39,6 +48,7 @@ class App extends Component {
 
     this.setState({ persons })
   }
+
 
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
