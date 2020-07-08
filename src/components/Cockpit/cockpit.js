@@ -4,7 +4,17 @@ import classes from './Cockpit.module.css';
 const Cockpit = (props) => {
     useEffect(() => {
         console.log('[Cockpit.js] useEffect')
-    });
+        setTimeout(() => {
+            console.log('Get Data from Cloud')
+        }, 1000);
+    }, []); // this will run for first time only
+
+    useEffect(() => {
+        console.log('[Cockpit.js] useEffectPersons')
+        setTimeout(() => {
+            console.log('Get Persons Data from Cloud')
+        }, 1000);
+    }, [props.persons]); // this will run when persons change
 
     let btnClass = '';
     if (props.showPersons) {
