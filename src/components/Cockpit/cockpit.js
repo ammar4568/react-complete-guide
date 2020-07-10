@@ -1,12 +1,17 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import classes from './Cockpit.module.css';
 
 const Cockpit = (props) => {
+
+    const toggleButtonRef = useRef(null);
+
     useEffect(() => {
         console.log('[Cockpit.js] useEffect')
-        setTimeout(() => {
-            console.log('Get Data from Cloud')
-        }, 1000);
+        // setTimeout(() => {
+        //     console.log('Get Data from Cloud')
+        // }, 1000);
+
+        toggleButtonRef.current.click();
 
         return(() => { // Works as componentWillUnmount
             console.log('[Cockpit.js] cleanup work in useEffect')
@@ -15,9 +20,9 @@ const Cockpit = (props) => {
 
     useEffect(() => {
         console.log('[Cockpit.js] useEffect')
-        setTimeout(() => {
-            console.log('Get Persons Data from Cloud')
-        }, 1000);
+        // setTimeout(() => {
+        //     console.log('Get Persons Data from Cloud')
+        // }, 1000);
 
         return(() => {
             console.log('[Cockpit.js] clearkup work in useEffect');
@@ -54,7 +59,7 @@ const Cockpit = (props) => {
         <div className={classes.Cockpit}>
             <h1>{props.appTitle}</h1>
             <p className={assignedClasses.join(' ')}>This is really working!</p>
-            <button className={btnClass} onClick={props.clicked}>Toggle Persons</button>
+            <button ref={toggleButtonRef} className={btnClass} onClick={props.clicked}>Toggle Persons</button>
         </div>
     )
 }
