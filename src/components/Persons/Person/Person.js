@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import Auxiliary from '../../hoc/Auxiliary'
-import withClass from '../../hoc/withClass'
 import classes from "./Person.module.css";
+import Auxiliary from '../../../hoc/Auxiliary'
+import withClass from '../../../hoc/withClass'
 import AuthContext from '../../../context/auth-context';
 
 class Person extends Component {
