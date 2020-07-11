@@ -37,8 +37,7 @@ class Persons extends PureComponent { // Pure component implements shouldCompone
                     changed={(event) => this.props.changed(event, person.id)}
                     name={person.name}
                     age={person.age}
-                    key={person.id}
-                    isAuth={this.props.authenticated} />
+                    key={person.id} />
             );
         })
     }

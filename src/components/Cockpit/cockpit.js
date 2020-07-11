@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import classes from './Cockpit.module.css';
+import AuthContext from '../../context/auth-context';
 
 const Cockpit = (props) => {
 
@@ -13,7 +14,7 @@ const Cockpit = (props) => {
 
         toggleButtonRef.current.click();
 
-        return(() => { // Works as componentWillUnmount
+        return (() => { // Works as componentWillUnmount
             console.log('[Cockpit.js] cleanup work in useEffect')
         })
     }, []); // this will run for first time only
@@ -24,7 +25,7 @@ const Cockpit = (props) => {
         //     console.log('Get Persons Data from Cloud')
         // }, 1000);
 
-        return(() => {
+        return (() => {
             console.log('[Cockpit.js] clearkup work in useEffect');
         })
     }); // Works every time
@@ -35,7 +36,7 @@ const Cockpit = (props) => {
             console.log('Get Persons Data from Cloud')
         }, 1000);
 
-        return(() => {
+        return (() => {
             console.log('[Cockpit.js] clearkup work in persons useEffect');
         })
     }, [props.persons]); // this will run when persons change
@@ -60,7 +61,9 @@ const Cockpit = (props) => {
             <h1>{props.appTitle}</h1>
             <p className={assignedClasses.join(' ')}>This is really working!</p>
             <button ref={toggleButtonRef} className={btnClass} onClick={props.clicked}>Toggle Persons</button>
-            <button onClick={props.login}>Login</button>
+            <AuthContext.Consumer>
+                {(context) => <button onClick={context.login}>Login</button>}
+            </AuthContext.Consumer>
         </div>
     )
 }
